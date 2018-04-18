@@ -4,33 +4,55 @@ using UnityEngine;
 
 public class Sensing : MonoBehaviour {
 
-    public bool sensingflg = false;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private float Stress;
+    public float Attack = 5.0f;
+    public float BadAttack = 20.0f;
+    private bool Hitflg;
+    private bool moveflg = false;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //当たり判定に触れた時
+        Stress = StressControl.stressState;
+
+        //当たり判定に生徒が触れた時
         if (col.gameObject.tag == "Enemy")
         {
-            sensingflg = true;
-            Debug.Log("StandBy...");
+            Hitflg = col.GetComponent<EnemyControl>().sflg;
+            //寝ているか寝ていないか
+            if (Hitflg != false)
+            {
+                Stress += Attack*(PlayerControl.Attack);
+                StressControl.stressState = Stress;
+                col.GetComponent<EnemyControl>().sflg = false;
+                Debug.Log("Hit");
+            }
+            else
+            {
+                Stress += BadAttack*(PlayerControl.Attack);
+                StressControl.stressState = Stress;
+                Debug.Log("Miss");
+
+            }
+
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-
-        //当たり判定から離れた時
-        sensingflg = false;
-
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update () {
-		
-	}
+        
+        //当たり判定を仕事させるためのちょっとした移動
+        if(moveflg == false)
+        {
+            transform.Translate(0.001f, 0, 0);
+            moveflg = !moveflg;
+
+        }
+        else
+        {
+            transform.Translate(-0.001f, 0, 0);
+            moveflg = !moveflg;
+        }
+
+    }
 }

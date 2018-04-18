@@ -7,36 +7,53 @@ public class EnemyControl : MonoBehaviour {
     public float sleepWaitTime;
     public float sleepLimitTime;
     public float subtractTime = 0.05f;
-    static public bool sleepflg = false;
+    public bool sflg = false;
+    Animator anima;
 
 	// Use this for initialization
 	void Start ()
     {
         sleepWaitTime = Random.Range(15.0f, 30.0f);
         sleepLimitTime = (sleepWaitTime * -1);
-        sleepflg = false;
+        sflg = false;
+        anima = transform.GetComponent<Animator>();
     }
 
 	// Update is called once per frame
 	void Update ()
     {
+        //叩かれて起こされたとき
+        if (sleepWaitTime < 0 && sflg == false)
+        {
+            sflg = false;
+            anima.SetBool("Sleepingflg", false);
+            sleepWaitTime = Random.Range(15.0f, 30.0f);
+            sleepLimitTime = (sleepWaitTime * -1);
+            Debug.Log("WaaaaaaaakeUP!!");
+        }
+
+        //非睡眠時、睡眠時の内部タイマー
         if (sleepWaitTime >= sleepLimitTime)
         {
             sleepWaitTime -= subtractTime;
-            if(sleepWaitTime <= 0 && sleepflg == false)
+            if(sleepWaitTime <= 0 && sflg == false)
             {
-                sleepflg = true;
+                sflg = true;
+                anima.SetBool("Sleepingflg",true);
                 Debug.Log("Sleeeeeeep!!");
             }
         }
 
+        //自分で起きた時
         if (sleepWaitTime < sleepLimitTime)
         {
-            sleepflg = false;
-            sleepWaitTime = Random.Range(7.0f, 15.0f);
+            sflg = false;
+            anima.SetBool("Sleepingflg", false);
+            sleepWaitTime = Random.Range(15.0f, 30.0f);
             sleepLimitTime = (sleepWaitTime * -1);
-            Debug.Log("WaaaaaaaakeUP!!");
+            Debug.Log("WakeUP!!");
         }
+
 
     }
 }

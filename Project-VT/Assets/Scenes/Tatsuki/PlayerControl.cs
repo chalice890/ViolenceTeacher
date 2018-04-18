@@ -12,28 +12,40 @@ public class PlayerControl : MonoBehaviour {
         RIGHT
     };
 
-    public float speed = 0.1f;
-    private float Stress;
-    public float Attack = 10.0f;
-    public int PlayerDir = (int)DIR.UP;
-    public bool Upattackflg = false;
-    public bool Downattackflg = false;
-    public bool Leftattackflg = false;
-    public bool Rightattackflg = false;
+    public enum ATTACKPOWER
+    {
+        NONE,
+        LOW,
+        MID,
+        HIG
+    };
 
+    public float speed = 0.1f;
+    //private float Stress;
+    static public int Attack = 0;
+    public int PlayerDir = (int)DIR.UP;
+    private bool watchflg;
+    private GameObject GetCol;
+    public  GameObject[] hands;
+    private int flameflg = 0;
+    
     // Use this for initialization
     void Start ()
     {
-
+        hands = GameObject.FindGameObjectsWithTag("Playerhand");
+        for(int i = 0; hands[i] != null; i++)
+        {
+            hands[i].SetActive(false);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("Block!!");
         //当たり判定に触れた時
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D col)
     {
 
         Debug.Log("Blockout!!");
@@ -43,7 +55,7 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        Stress = StressControl.stressState;
+        //Stress = StressControl.stressState;
 
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -74,26 +86,103 @@ public class PlayerControl : MonoBehaviour {
             PlayerDir = (int)DIR.RIGHT;
         }
 
+        if (flameflg != 0 && ++flameflg > 3 )
+        {
+            flameflg = 0;
+            if (GetCol.activeSelf != false)
+            {
+                GetCol.SetActive(false);
+                Debug.Log("NoneEnemy");
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Stress += Attack;
-            StressControl.stressState = Stress;
+            switch (PlayerDir)
+            {
+                case (int)DIR.UP:
+                    GetCol = gameObject.transform.Find("UpCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.DOWN:
+                    GetCol = gameObject.transform.Find("DownCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.LEFT:
+                    GetCol = gameObject.transform.Find("LeftCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.RIGHT:
+                    GetCol = gameObject.transform.Find("RightCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;        
+            }
+            Attack = (int)ATTACKPOWER.LOW;
             Debug.Log("LowAttack!!");
         }
 
         if(Input.GetKeyDown(KeyCode.X))
         {
-            Stress += Attack * 2;
-            StressControl.stressState = Stress;
+            switch (PlayerDir)
+            {
+                case (int)DIR.UP:
+                    GetCol = gameObject.transform.Find("UpCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.DOWN:
+                    GetCol = gameObject.transform.Find("DownCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.LEFT:
+                    GetCol = gameObject.transform.Find("LeftCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.RIGHT:
+                    GetCol = gameObject.transform.Find("RightCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+            }
+            Attack = (int)ATTACKPOWER.MID;
             Debug.Log("NormalAttack!!");
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Stress += Attack * 3;
-            StressControl.stressState = Stress;
+            switch (PlayerDir)
+            {
+                case (int)DIR.UP:
+                    GetCol = gameObject.transform.Find("UpCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.DOWN:
+                    GetCol = gameObject.transform.Find("DownCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.LEFT:
+                    GetCol = gameObject.transform.Find("LeftCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+                case (int)DIR.RIGHT:
+                    GetCol = gameObject.transform.Find("RightCollision").gameObject;
+                    GetCol.SetActive(true);
+                    flameflg = 1;
+                    break;
+            }
+            Attack = (int)ATTACKPOWER.HIG;
             Debug.Log("HardAttack!!");
         }
-
     }
+    
+
 }
