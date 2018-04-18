@@ -9,13 +9,14 @@ public class StressControl : MonoBehaviour {
     static public float stressState = 0f;
     public float subtract = 0.05f;
 
-	//// Use this for initialization
-	//void Start () {
-		
-	//}
-	
-	// Update is called once per frame
-	void Update ()
+    // Use this for initialization
+    void Start()
+    {
+        stressState = 0f;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (stressState < 100.0f)
         {
@@ -27,6 +28,7 @@ public class StressControl : MonoBehaviour {
         }
         else
         {
+            stressState = 0f;
             SceneManager.LoadScene("GameOver1");
         }
 

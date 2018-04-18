@@ -11,8 +11,13 @@ public class LimitTimer : MonoBehaviour {
     private bool Gameoverflg;
     private bool Chackflg = false;
 
-	// Update is called once per frame
-	void Update ()
+    //void Start()
+    //{
+    //    counttime = 60;    
+    //}
+
+    // Update is called once per frame
+    void Update ()
     {
         if(counttime > 0.0f)
         {

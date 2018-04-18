@@ -16,7 +16,7 @@ public class titlemove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Titleimg.transform.position.x < 0 )
+        if (Titleimg.transform.position.x < -3 )
         {
             Titleimg.transform.position += new Vector3(movex, 0, 0);
         }
@@ -25,7 +25,7 @@ public class titlemove : MonoBehaviour {
             titleflg = 1;
         }
         if (titleflg == 1){
-            if (Titleimg2.transform.position.x > 0)
+            if (Titleimg2.transform.position.x > -3)
             {
                 Titleimg2.transform.position -= new Vector3(movex, 0, 0);
             }

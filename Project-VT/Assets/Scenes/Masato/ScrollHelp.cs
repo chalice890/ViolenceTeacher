@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScrollHelp : MonoBehaviour {
 
@@ -11,8 +12,8 @@ public class ScrollHelp : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-		
-	}
+        MenuNo = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -57,11 +58,11 @@ public class ScrollHelp : MonoBehaviour {
             }
             //HelpImg.transform.position = new Vector3(-13, 0, 0);
         }else if (MenuNo < 0) { 
-            //  SceneManager.LoadScene("GameTitle");
-            Debug.Log("GameTitle来ました。");
+            SceneManager.LoadScene("Yuki");
+            //Debug.Log("GameTitle来ました。");
         }else{
-            //  SceneManager.LoadScene("GameMain");
-            Debug.Log("GameMain来ました。");
+            SceneManager.LoadScene("Tatsuki");
+            //Debug.Log("GameMain来ました。");
         }
        
     }
