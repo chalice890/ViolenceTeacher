@@ -34,11 +34,11 @@ public class LimitTimer : MonoBehaviour {
 
             if(Gameoverflg == false)
             {
-                GetComponent<Text>().text = "GameOver";
+                SceneManager.LoadScene("GameOver2");
             }
             else
             {
-                GetComponent<Text>().text = "GameClear";
+                SceneManager.LoadScene("Gameclear");
             }
         }
     }
