@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour {
 
@@ -34,16 +35,16 @@ public class Title : MonoBehaviour {
             switch (MenuNo)
             {
                 case 0:
-                    // SceneManager.LoadScene("GameMain");
-                    Debug.Log("メインに行くよー");
+                    SceneManager.LoadScene("GameMain");
+                   // Debug.Log("メインに行くよー");
                     break;
                 case 1:
-                    // SceneManager.LoadScene("GameHelp");
-                    Debug.Log("HELP");
+                    SceneManager.LoadScene("GameHelp");
+                   // Debug.Log("HELP");
                     break;
                 case 2:
-                    //  SceneManager.LoadScene("GameEnd");
-                    Debug.Log("END");
+                    SceneManager.LoadScene("GameEnd");
+                   // Debug.Log("END");
                     break;
             }
     }
