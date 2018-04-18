@@ -141,8 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StaffImg: {fileID: 154581023}
-  movey: 0.025
-  endTime: 15
+  movey: 0.2
 --- !u!212 &154581025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -211,7 +210,7 @@ GameObject:
   - component: {fileID: 609605331}
   - component: {fileID: 609605330}
   m_Layer: 0
-  m_Name: "\u6700\u5F8C\u306E\u4E00\u8A00(\u4EEE)"
+  m_Name: LastWord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
