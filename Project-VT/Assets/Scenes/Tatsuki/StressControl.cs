@@ -27,7 +27,7 @@ public class StressControl : MonoBehaviour {
         }
         else
         {
-            GetComponent<Text>().text = "GameOver";
+            SceneManager.LoadScene("GameOver1");
         }
 
     }
