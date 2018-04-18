@@ -35,15 +35,15 @@ public class Title : MonoBehaviour {
             switch (MenuNo)
             {
                 case 0:
-                    SceneManager.LoadScene("GameMain");
+                    SceneManager.LoadScene("Tatsuki");
                    // Debug.Log("メインに行くよー");
                     break;
                 case 1:
-                    SceneManager.LoadScene("GameHelp");
+                    SceneManager.LoadScene("masato2");
                    // Debug.Log("HELP");
                     break;
                 case 2:
-                    SceneManager.LoadScene("GameEnd");
+                    SceneManager.LoadScene("Masato");
                    // Debug.Log("END");
                     break;
             }

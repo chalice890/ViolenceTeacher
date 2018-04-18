@@ -26,14 +26,14 @@ public class PlayerControl : MonoBehaviour {
     public int PlayerDir = (int)DIR.UP;
     private bool watchflg;
     private GameObject GetCol;
-    public  GameObject[] hands;
+    public GameObject[] hands;
     private int flameflg = 0;
     
     // Use this for initialization
     void Start ()
     {
         hands = GameObject.FindGameObjectsWithTag("Playerhand");
-        for(int i = 0; hands[i] != null; i++)
+        for(int i = 0; i < 4; i++)
         {
             hands[i].SetActive(false);
         }
