@@ -5,8 +5,8 @@ using UnityEngine;
 public class Sensing : MonoBehaviour {
 
     private float Stress;
-    public float Attack = 5.0f;
-    public float BadAttack = 20.0f;
+    public float Attack = 0.05f;
+    public float BadAttack = 0.1f;
     private bool Hitflg;
     private bool moveflg = false;
 
