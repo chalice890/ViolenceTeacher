@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoScroll : MonoBehaviour {
     public GameObject NoImg;
-    static public int flg = ScrollHelp.flg;
+    static public bool flg = ScrollHelp.flg;
 
     // Use this for initialization
     void Start () {
