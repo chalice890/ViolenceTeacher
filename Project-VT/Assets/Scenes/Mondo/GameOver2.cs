@@ -5,17 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class GameOver2 : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private AudioSource ASource;
+    public AudioClip CursolSE;
+    public AudioClip SelectSE;
+    // Use this for initialization
+    void Start () {
+        AudioSource[] AS = GetComponents<AudioSource>();
+        ASource = AS[1];
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-
             SceneManager.LoadScene("Yuki");
+            ASource.clip = CursolSE;
+            ASource.Play();
         }
     }
 }

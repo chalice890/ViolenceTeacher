@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class yazi : MonoBehaviour {
     public GameObject YaziImg;
-    static public int flg = ScrollHelp.flg;
+    static public bool flg = ScrollHelp.flg;
 
     // Use this for initialization
     void Start () {
@@ -17,10 +17,12 @@ public class yazi : MonoBehaviour {
 //        YaziImg.transform.position = new Vector3(-8, 0, 0);
         Debug.Log(flg + "切り替わり");
         flg = ScrollHelp.flg;
-        if (flg == 1){
+        if (!flg){
             YaziImg.transform.position = new Vector3(5, -10, 0);
+            ScrollHelp.PushFlg = false;
         }else{
             YaziImg.transform.position = new Vector3(5, 0, 0);
+            ScrollHelp.PushFlg = true;
         }
 		
 	}

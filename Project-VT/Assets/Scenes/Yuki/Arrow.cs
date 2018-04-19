@@ -18,7 +18,7 @@ public class Arrow : MonoBehaviour {
 
        // if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) {
             Y = Title.MenuNo;
-            arrow.transform.position = new Vector3(5, -Y, 0);
+            arrow.transform.position = new Vector3(-6, -Y*1.2f+(-2), 0);
        // }
 
     }
