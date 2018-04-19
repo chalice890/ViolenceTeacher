@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour {
 
+    SpriteRenderer SRenderer;
+
     public float sleepWaitTime;
     public float sleepLimitTime;
     public float subtractTime = 0.05f;
     public bool sflg = false;
-    Animator anima;
+    public bool Famale = false;
+    public bool Male = false;
+    public Sprite WakeupImage;
+    public Sprite SleepImage;
+
 
 	// Use this for initialization
 	void Start ()
@@ -16,7 +22,7 @@ public class EnemyControl : MonoBehaviour {
         sleepWaitTime = Random.Range(15.0f, 30.0f);
         sleepLimitTime = (sleepWaitTime * -1);
         sflg = false;
-        anima = transform.GetComponent<Animator>();
+        SRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
 	// Update is called once per frame
@@ -26,7 +32,7 @@ public class EnemyControl : MonoBehaviour {
         if (sleepWaitTime < 0 && sflg == false)
         {
             sflg = false;
-            anima.SetBool("Sleepingflg", false);
+            SRenderer.sprite = WakeupImage;
             sleepWaitTime = Random.Range(15.0f, 30.0f);
             sleepLimitTime = (sleepWaitTime * -1);
             Debug.Log("WaaaaaaaakeUP!!");
@@ -39,7 +45,7 @@ public class EnemyControl : MonoBehaviour {
             if(sleepWaitTime <= 0 && sflg == false)
             {
                 sflg = true;
-                anima.SetBool("Sleepingflg",true);
+                SRenderer.sprite = SleepImage;
                 Debug.Log("Sleeeeeeep!!");
             }
         }
@@ -48,7 +54,7 @@ public class EnemyControl : MonoBehaviour {
         if (sleepWaitTime < sleepLimitTime)
         {
             sflg = false;
-            anima.SetBool("Sleepingflg", false);
+            SRenderer.sprite = WakeupImage;
             sleepWaitTime = Random.Range(15.0f, 30.0f);
             sleepLimitTime = (sleepWaitTime * -1);
             Debug.Log("WakeUP!!");
